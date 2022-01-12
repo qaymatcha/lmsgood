@@ -1,0 +1,22 @@
+<div class="topnav">
+    <a class="active" href="admin/teacherplatform">Back</a>
+    <a href="admin/teacherplatform/viewteachers">View Teachers</a>
+    <a href="admin/teacherplatform/addteachers">Add Teachers</a>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+      <td>Sr.No.</td>
+      <td>Teacher Name</td>
+      <td>Designaton</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let teacher of data; let i = index">
+      <td>{{i}}</td>
+      <td>{{teacher.name}}</td>
+      <td>{{teacher.designation}}</td>
+    </tr>
+    </tbody>
+</table>

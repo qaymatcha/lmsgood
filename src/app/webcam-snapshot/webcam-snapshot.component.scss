@@ -1,0 +1,40 @@
+.snap-container {
+    padding: 100px 0px ;
+    margin-left: -15%;
+    margin-bottom: 200px;
+    margin-top: -70px;
+    text-align: center;
+    }
+    
+    .list-unstyled {
+      list-style: none;
+    }
+    
+    .list-unstyled li {
+      display: inline-block;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    
+    .show {
+      display: block;
+    }
+    
+    .hide {
+      display: none;
+    }
+  
+    .video-container {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    
+    .input-group {
+      margin-left: 35%;
+      margin-right: auto;
+      margin-top: 50px;
+      width: 500px;
+      text-align: center;
+    }

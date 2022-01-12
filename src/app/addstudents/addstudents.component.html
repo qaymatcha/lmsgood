@@ -1,0 +1,20 @@
+<div class="topnav">
+    <a href="admin/studentplatform">Home</a>
+    <a href="admin/studentplatform/viewstudents">View Students</a>
+    <a href="admin/studentplatform/addstudents">Add Students</a>
+</div>
+
+<h3>Add Student</h3>
+<div>
+  <form action="#">
+    <label for="name">Student Name</label>
+    <input type="text" id="name" name="name" placeholder="Student Name" [(ngModel)] = "student.name">
+
+    <label for="rollno">Roll Number</label>
+    <input type="text" id="rollno" name="rollno" placeholder="Roll Number" [(ngModel)]="student.rollno">
+
+    <input (click) = "addStudent()" type="submit" value="Submit">
+  </form>
+</div>
+
+

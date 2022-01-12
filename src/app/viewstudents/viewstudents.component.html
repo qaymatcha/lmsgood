@@ -1,0 +1,22 @@
+<div class="topnav">
+    <a href="admin/studentplatform">Back</a>
+    <a href="admin/studentplatform/viewstudents">View Students</a>
+    <a href="admin/studentplatform/addstudents">Add Students</a>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+      <td>Sr.No.</td>
+      <td>Student Name</td>
+      <td>Roll Number</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let std of data; let i = index">
+      <td>{{i}}</td>
+      <td>{{std.name}}</td>
+      <td>{{std.rollno}}</td>
+    </tr>
+    </tbody>
+</table>
