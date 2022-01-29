@@ -4,22 +4,22 @@
 	<canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
 		[height]="HEIGHT"></canvas>
 </div>
+
 <div class="input-group flex-nowrap">
 	<span class="input-group-text" id="addon-wrapping">Nomor Identitas</span>
-	<input type="text" class="form-control" placeholder="Nomor Identitas" aria-label="Nomor Identitas" aria-describedby="addon-wrapping">
+	<input type="text" class="form-control" placeholder="Nomor Identitas" aria-label="Nomor Identitas" aria-describedby="addon-wrapping" [formControl]="identificationString">
   </div>
+
 <div class="snap-container">
 	<button routerLink =""class="btn btn-primary" *ngIf="!isCaptured" (click)="capture()">Login</button>
-	<button class="btn btn-danger" *ngIf="isCaptured" (click)="removeCurrent()">Take Another</button>
 	<div *ngIf="error" class="text-danger mt-4">
 		{{ error }}. Please click perizinan yang bergambar tanda seru untuk mengaktifkan webcam
 		<div class="mt-5">
 		</div>
 		</div>
+  <div *ngIf="loginError" class="text-danger mt-4">
+    Wajah atau Nomor Identitas Tidak Sesuai. Silahkan Ulang Dengan Tombol Login Lagi
+    <div class="mt-5">
+    </div>
+  </div>
 	</div>
-	
-	<ul class="list-unstyled">
-		<li *ngFor="let src of captures; let idx = index" (click)="setPhoto(idx)">
-			<img [src]="src" height="50" />
-  </li>
-	</ul>

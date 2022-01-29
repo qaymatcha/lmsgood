@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
+import {FormControl} from "@angular/forms";
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: "app-webcam-snapshot",
@@ -10,7 +12,7 @@ import { Router } from "@angular/router";
 export class WebcamSnapshotComponent implements AfterViewInit {
   WIDTH = 640;
   HEIGHT = 480;
-  
+
   @ViewChild("video")
   public video!: ElementRef;
 
@@ -20,6 +22,8 @@ export class WebcamSnapshotComponent implements AfterViewInit {
   captures: string[] = [];
   error: any;
   isCaptured!: boolean;
+  identificationString = new FormControl('');
+  loginError = false
 
   async ngAfterViewInit() {
     await this.setupDevices();
@@ -44,25 +48,19 @@ export class WebcamSnapshotComponent implements AfterViewInit {
     }
   }
 
-    constructor(private router: Router){}
+    constructor(private router: Router, private loginService: LoginService){}
 
   capture() {
     this.drawImageToCanvas(this.video.nativeElement);
-    this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
-    this.isCaptured = true;
-    this.router.navigateByUrl('/dashboard');
+
+    this.loginService.login(this.identificationString.value,this.canvas.nativeElement.toDataURL("image/jpeg")).subscribe(res=>{
+      this.router.navigateByUrl('/dashboard');
+    },error=>{
+     this.loginError = true
+    })
+
   }
 
-  removeCurrent() {
-    this.isCaptured = false;
-  }
-
-  setPhoto(idx: number) {
-    this.isCaptured = true;
-    var image = new Image();
-    image.src = this.captures[idx];
-    this.drawImageToCanvas(image);
-  }
 
   drawImageToCanvas(image: any) {
     this.canvas.nativeElement

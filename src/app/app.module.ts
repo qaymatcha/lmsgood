@@ -22,6 +22,7 @@ import { TeacheraddassignmentComponent } from './teacheraddassignment/teacheradd
 import { StudentviewassignmentComponent } from './studentviewassignment/studentviewassignment.component';
 import { HelloComponent } from './webcam-snapshot/hello.component';
 import { WebcamSnapshotModule } from './webcam-snapshot/webcam-snapshot.module';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -46,9 +47,10 @@ import { WebcamSnapshotModule } from './webcam-snapshot/webcam-snapshot.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
-    WebcamSnapshotModule
+    WebcamSnapshotModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
