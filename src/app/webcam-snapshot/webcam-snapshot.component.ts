@@ -54,6 +54,7 @@ export class WebcamSnapshotComponent implements AfterViewInit {
     this.drawImageToCanvas(this.video.nativeElement);
 
     this.loginService.login(this.identificationString.value,this.canvas.nativeElement.toDataURL("image/jpeg")).subscribe(res=>{
+      localStorage.setItem("user", JSON.stringify(res));
       this.router.navigateByUrl('/dashboard');
     },error=>{
      this.loginError = true
